@@ -34,14 +34,17 @@ GROUP BY Departments.DeptName;
 ```
 
 ## 1) 
+``` SQL
 CREATE TABLE "MusicVideo" (
 	"TrackID"	INTEGER,
 	"VideoDirector"	TEXT,
 	PRIMARY KEY("TrackID"),
 	FOREIGN KEY("TrackID") REFERENCES "tracks"("TrackID")
 );
+```
 
 ## 2) 
+``` SQL
 INSERT INTO MusicVideo (TrackId, VideoDirector) VALUES
     (1, 'a'),
     (2, 'b'),
@@ -53,14 +56,18 @@ INSERT INTO MusicVideo (TrackId, VideoDirector) VALUES
     (8, 'h'),
     (9, 'i'),
     (10, 'j')
+```
 
 ## 3)
+``` SQL
 INSERT INTO MusicVideo (TrackId, VideoDirector)
 SELECT TrackId, NULL
 FROM tracks
 WHERE Name = 'Voodoo';
+```
 
 ## 4)
+``` SQL
 SELECT TrackId
 FROM tracks 
 WHERE Name LIKE '%á%' 
@@ -68,13 +75,17 @@ WHERE Name LIKE '%á%'
    OR Name LIKE '%í%' 
    OR Name LIKE '%ó%' 
    OR Name LIKE '%ú%';
+```
 
 ## 5)
+``` SQL
 SELECT customers.CustomerId, customers.LastName, invoices.InvoiceId, invoices.Total
 FROM customers
 INNER JOIN invoices ON customers.CustomerId = invoices.CustomerId;
+```
 
 ## 6) 
+``` SQL
 SELECT
     customers.CustomerId,
     customers.LastName,
@@ -82,3 +93,4 @@ SELECT
 FROM customers
 LEFT JOIN invoices ON customers.CustomerId = invoices.CustomerId
 GROUP BY customers.CustomerId, customers.LastName;
+```
